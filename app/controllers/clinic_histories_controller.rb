@@ -19,6 +19,7 @@ class ClinicHistoriesController < ApplicationController
 
   # GET /countries/1/edit
   def edit
+
   end
 
 
@@ -46,10 +47,21 @@ class ClinicHistoriesController < ApplicationController
         format.json { render json: @clinic_history.errors, status: :unprocessable_entity }
       end
     end
-
-
-
   end
+
+  def update
+    respond_to do |format|
+      if @clinic_history.update(clinic_history_params)
+        format.html { redirect_to patient_clinic_history_steps_path(@patient, @clinic_history,
+         ClinicHistory.form_steps.second), notice: 'clinic_history was successfully updated.' }
+        format.json { render :show, status: :ok, location: @clinic_history }
+      else
+        format.html { render :edit }
+        format.json { render json: @clinic_history.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /pets/1
   # DELETE /pets/1.json

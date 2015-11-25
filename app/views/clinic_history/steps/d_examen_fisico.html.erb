@@ -14,8 +14,8 @@
     <a class="btn btn-info color_blanco mrg disabled">5. Impresión Diagnostica</a>
 
 
-</div>
 
+</div>
 
 
 
@@ -28,13 +28,11 @@
         
 
 <style type="text/css">
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 .panel-heading {
     background-image: none;
     background-color: #ECECEC;
     color: #5bc0de;
-    font-family: 'Roboto', sans-serif;
 }
 
   .panel-title{
@@ -50,30 +48,11 @@
     display: inline-block;
     width: 30% !important;
   }
-  .sig
-  {
-
-    text-align: left!important,
-  }
-  .gls
-  {
-
-    width: 15%!important;
-    display: inline-block!important;
-    text-align: right;
-    padding: 0px;
-  }
-  .ult th 
-  {
-
-    text-align: left!important;
-  }
-
+.titulo{
+  margin-top: 20px;
+  margin-bottom: -8px;
+}
 </style>
-
-
-
-
 
 
 
@@ -86,11 +65,18 @@
 
 
 
+<div class="cabezera">
+<h1 class="titulo">
+  <div class="animated fadeInLeft"><span style = "margin-right:10px;"class="glyphicon glyphicon-user"></span> PASO 4:</div><div class="animated fadeInRight"> EXAMEN FISICO</div>
+</h1>
+</div>
 
-<div class="container" style="margin-top:10px; margin-bottom:-8px;">
-        <div class="centered title"> <h1 style=" font-size:25px;"> <span style = "margin-right:10px;"class="glyphicon glyphicon-user"></span> Paso 4 Examen Fisico</h1></div>
+
+
+
      </div>
      <hr class="featurette-divider"></hr>
+
 
 
 
@@ -98,17 +84,27 @@
 <div class="container-fluid">
     <div class="row">
           <div class="col-md-3">
-              <label>TA mm/HG:</label> 
-              <%= f.input :ta_mmgh, :input_html => { :class => 'form-control fs1' }, label: false %>
+            <label style = "display:block;margin-left:50px;">TA mm / HG</label>
+           <div class="row">
+           <div class="col-md-6" style = "padding-right:3px!important;">
+             
+              <%= f.input :ta_mmgh, :input_html => { :class => 'form-control fs1 ps' }, label: false %>
+          </div> 
+          <div class="col-md-6" style = "padding-left:3px!important;">
+            
+              <%= f.input :ta_mmgh, :input_html => { :class => 'form-control fs1 ps' }, label: false %>
+          </div> 
+          </div>  
           </div>   
  
           <div class="col-md-3">
                   <label >% SAT. de O2 Ambiente </label>
-                      <%= f.input :sat_of_o_ambiente, :input_html => { :class => 'form-control fs1' }, label: false %>
+                      <%= f.text_field :sat_of_o_ambiente,  :class => 'form-control fs1 hj' %>
+                     
               </div>
 
           <div class="col-md-3">
-                  <label >Temperatura</label>
+                  <label >Temperatura(C)</label>
                       <%= f.input :temperature, :input_html => { :class => 'form-control fs1' }, label: false %>
               </div>
 
@@ -119,6 +115,7 @@
           </div>
 
  </div>
+<br>
 
 
     <div class="row">
@@ -138,13 +135,13 @@
  
 
         <div class="col-md-3">
-              <label>Peso en Kilogramos:</label> 
+              <label>Peso en (Kgs)</label> 
                       <%= f.input :weight_in_kilograms, :input_html => { :class => 'form-control fs1' }, label: false %>
           </div>
 
 
           <div class="col-md-3">
-              <label>Altura en Centimetros:</label> 
+              <label>Altura en (cms):</label> 
               <%= f.input :height_in_centimeters, :input_html => { :class => 'form-control fs1' }, label: false %>
  
         </div>
@@ -582,6 +579,7 @@
              <th  colspan="1" style = "width:33%!important;">
            RESPUESTA MOTORA
            </th>
+      </thead>
 
       </tr>
       <tr >
@@ -695,18 +693,135 @@
             
 
       </tr>
+
+
+
+  </table>
+<hr>
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered table-hover vital">
+  <thead>
+      <tr>
+          <th ><span class="option" > APERTURA OCULAR  </span></th>
+          <td><span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+          <span>Longer Column Header</span>
+          </td>
+
+          <th><span class="option"> RESPUESTA VERBAL </span></th>
+          <td><span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+          <span>Longer Column Header</span>
+          </td>
+
+
+          <th><span class="option"> RESPUESTA MOTORA</span></th>
+          <td><span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+          <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+          <span>Longer Column Header</span>
+                    <hr>
+
+                
+              <%= f.label "1 - sin_respuesta" %>
+                <%= f.radio_button(:motor_response, "1".to_i , class: "calc")%>
+
+
+          </td>
+
+      </tr>
+
+</thead>
+
+</table>
+
+<style type="text/css">
+
+.option {
+  width: 10px !important;
+  margin-top:-100px !important;
+  margin-right: -10px; 
+  writing-mode: tb-rl;
+  filter: flipv fliph;
+  -webkit-transform:rotate(-90deg); 
+  white-space:nowrap; 
+  display:block;
+}
+
+</style>
+
+
+<script type="text/javascript">
+  $(function() {
+    var header_height = 0;
+    $('table th span').each(function() {
+        if ($(this).outerWidth() > header_height) header_height = $(this).outerWidth();
+    });
+
+    $('table th').height(header_height);
+});
+</script>
+
+
+
+
+
+
+   <table class="table table-bordered table-hover sig" id="tab_logic">
+
+        <thead>
+          <tr >
+            <th  colspan="1" style = "width:20%!important;">
+            </th>
+            <th  colspan="1" style = "width:80%!important;">
+            </th>
+
+          </tr> 
+      </thead>
+
       <tr >
-            <td  colspan="1" style = "width:33%!important;">
+            <th  colspan="1" >
         <label>Escala De Glasgow </label> <br/>
   
 <%= f.number_field :escala_de_glasgow, class: 'form-control gls' , :readonly => true, id: 'sum'  %><span sytle = "font-size:20px!important;"> /15</span> 
-            </th>
+            </td>
            
 
       </tr>
 
-      </thead>
+
+
   </table>
+
 
 
 

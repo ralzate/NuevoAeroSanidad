@@ -173,11 +173,12 @@
                   <div class="col-md-4">
                     <label class="label">Profesion</label>
                     <div class="form-group">
-                      <%= f.input :profession,
-                          prompt:       'Seleccionar una Profesión',
-                          collection: @patient.select_profession.sort,
-                          error: false, label: false, 
-                          input_html:   {class: 'form-control fontf'} %>
+     
+
+                        <%= f.text_field :profession, class: "form-control ", required: true, placeholder: 'profession',  id: 'document'  %>
+
+
+
                     </div>
                   </div>
 
@@ -196,6 +197,13 @@
                   </div>
                 </div>
 
+              </div>
+
+
+
+
+
+              <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
                   <label class="label">Nacionalidad</label>
@@ -207,6 +215,36 @@
                   </div>
                 </div>
 
+
+
+    <label for="chkPassport">
+        <input type="checkbox" id="chkPassport" />
+        No esta registrado?
+    </label>
+    <div id="dvPassport" style="display: none">
+
+        <%= f.simple_fields_for :city do |builder| %>
+    <%#= builder.label :account_type %>
+
+        <div class="col-md-4">
+          <label class="label">Nueva Ciudad</label>
+          <div class="form-group">
+            <%= builder.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+
+
+
+    <%#= builder.label :account_number %>
+    <% end %>
+
+
+    </div>
+
+
+
+
+
               </div>
 
 
@@ -216,6 +254,7 @@
                <div class="well pie_form">
                 <div class="form-actions"  style = "text-align:center!important"> 
                     
+                        <%= link_to "Volver al Listado", root_path, :class=>"btn btn-info color_blanco mrg" %>
                         <button type="reset" class="btn btn btn-info custom" style = "margin-right:20px;">Borrar</button>
                         <%= f.submit "Guardar", :class => 'btn btn btn-info custom ' %>
                     
@@ -228,12 +267,6 @@
 
       </div>
 
- 
-
-
-
-
-          
        
        
 
@@ -250,3 +283,14 @@
 
 
 
+<script type="text/javascript">
+    $(function () {
+        $("#chkPassport").click(function () {
+            if ($(this).is(":checked")) {
+                $("#dvPassport").show();
+            } else {
+                $("#dvPassport").hide();
+            }
+        });
+    });
+</script>

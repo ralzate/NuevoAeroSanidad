@@ -188,7 +188,7 @@ background-image: url('/assets/06.jpg')  ;
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
 
-                <%= email_field_tag :email, nil, class: 'form-control', required: true, :placeholder => "Email" %>
+                <%= text_field_tag :first_name, nil, class: 'form-control', required: true, :placeholder => "Email" %>
                 <%= password_field_tag :password, nil, class: 'form-control', required: true, :placeholder => "Clave" %>
                 <div id="remember" class="checkbox">
                     <label>
@@ -206,7 +206,6 @@ background-image: url('/assets/06.jpg')  ;
 </div>
 <% end %>
 <style type="text/css">
-
 
 
 

@@ -56,7 +56,11 @@
     <td><%= clinic_history.first_name %></td>
     <td><%= clinic_history.document %></td>
     <td><%= clinic_history.created_at.strftime('%b %d. %Y') %></td>
-    <td><%= link_to 'Ver Historia Clinica', patient_clinic_history_path(@patient,clinic_history), :class => "btn btn-info blanco btn-sm" %> &nbsp; <%= link_to 'Notas de Evolución', patient_clinic_history_progress_notes_path(@patient,clinic_history), :class => "btn btn-primary blanco btn-sm" %></td>
+    <td><%= link_to 'Ver Historia Clinica', patient_clinic_history_path(@patient,clinic_history), :class => "btn btn-info blanco btn-sm" %>  
+
+     &nbsp;  <%= link_to 'Editar Historia Clinica', edit_patient_clinic_history_path(@patient,clinic_history), :class => "btn btn-success blanco btn-sm" %>
+
+     &nbsp; <%= link_to 'Notas de Evolución', patient_clinic_history_progress_notes_path(@patient,clinic_history), :class => "btn btn-primary blanco btn-sm" %></td>
 
 
   </tr>

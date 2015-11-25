@@ -1,4 +1,6 @@
 
+
+
 <div class="col-md-12" style = "margin:25px!important">
     <%= link_to "Listado de Usuarios",  users_path, :class => "btn btn-info color_blanco  pull-left" %>
 </div>
@@ -142,17 +144,23 @@
 
                   <div class="col-md-3">
                     <label class="label">Rol</label>
-                    <div class="form-group">
+                    <div class="form-group" id="tagtype">
                       <%= f.collection_select :rol_id, Rol.all, :id, :name, {prompt: "Campo Obligatorio"}, {class: "form-control"} %>
                     </div>
                   </div>
 
                   
+
+
+
+
+
+
                   <div class="col-md-3">
-                    <label class="label">Registro Medico</label>
+                    <label class="label ">Registro Medico</label>
                     <div class="form-group">
 
-                      <%= f.text_field :medical_record, class: 'ng-binding form-control', required: true, placeholder: 'Registro Medico' %>
+                      <%= f.text_field :medical_record, class: 'ng-binding form-control multiples', required: true, placeholder: 'Registro Medico' %>
                     </div>
                   </div>
 
@@ -187,14 +195,19 @@
 
                   <div class="col-md-3">
                     <label class="label">Contraseña</label>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', :id => 'password3' %>
     </div>
 
 
 
                   <div class="col-md-3">
                     <label class="label">Confirmar Contraseña</label>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control', :id => 'password4' %>
+      <div class="row">
+<div class="col-sm-12">
+<span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Las Contraseñas Concuerdan
+</div>
+</div>
     </div>
     </div>
 
@@ -202,6 +215,8 @@
                <div class="well pie_form">
                 <div class="form-actions"  style = "text-align:center!important"> 
                     
+                        <%= link_to "Volver al Listado", users_path, :class=>"btn btn-info color_blanco mrg" %>
+
                         <button type="reset" class="btn btn btn-info custom" style = "margin-right:20px;">Borrar</button>
                         <%= f.submit "Guardar", :class => 'btn btn btn-info  custom' %>
                     
@@ -231,3 +246,52 @@
 
 
    
+
+
+
+
+<script type="text/javascript"> 
+jQuery(document).ready(function() {
+   jQuery("#tagtype").change(function() {
+      if(jQuery(this).find("option:selected").val() == "1" ) {
+         jQuery(".multiples").prop('disabled', true);
+      }
+   });
+
+  jQuery("#tagtype").change(function() {
+      if(jQuery(this).find("option:selected").val() == "3" ) {
+         jQuery(".multiples").prop('disabled', true);
+      }
+   });
+
+  jQuery("#tagtype").change(function() {
+      if(jQuery(this).find("option:selected").val() == "2" ) {
+         jQuery(".multiples").prop('disabled', false);
+      }
+   });
+
+
+});
+</script>
+
+
+<script type="text/javascript">
+  $("input[type=password]").keyup(function(){
+    var ucase = new RegExp("[A-Z]+");
+  var lcase = new RegExp("[a-z]+");
+  var num = new RegExp("[0-9]+");
+
+  if($("#password4").val() == $("#password3").val()){
+    $("#pwmatch").removeClass("glyphicon-remove");
+    $("#pwmatch").addClass("glyphicon-ok");
+    $("#pwmatch").css("color","#00A41E");
+  }
+
+
+  else{
+    $("#pwmatch").removeClass("glyphicon-ok");
+    $("#pwmatch").addClass("glyphicon-remove");
+    $("#pwmatch").css("color","#FF0004");
+  }
+});
+</script>

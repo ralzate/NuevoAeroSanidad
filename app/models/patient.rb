@@ -35,6 +35,9 @@ class Patient < ActiveRecord::Base
   has_many :clinic_histories
    has_many :progress_notes
 
+  accepts_nested_attributes_for :city
+
+validates :first_name, presence: { message: "Story title is required" }
 
    def self.search(search)
     where("first_name like '%#{search}%'  or second_name like '%#{search}%' 

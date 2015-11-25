@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20151113135559) do
     t.string   "phone"
     t.integer  "user_id"
     t.string   "city"
+    t.integer  "city_id"
     t.string   "department"
     t.string   "cove"
     t.string   "mobiel_service"

@@ -23,6 +23,7 @@ class CreateClinicHistories < ActiveRecord::Migration
       t.string :phone
       t.references :user, index: true, foreign_key: true
       t.string :city
+      t.integer :city_id   
       t.string :department
       t.string :cove
       t.string :mobiel_service
