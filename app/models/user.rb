@@ -51,12 +51,12 @@ class User < ActiveRecord::Base
   PASSWORD_REGEX = /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+\z/
 
 
-  validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
+  # validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
   validates :password, :presence  => true, :confirmation => true, :on => :update
 
 
   validates :password, presence: true, length: { minimum: 3 }, confirmation: true, if: :new_user?
-  validates :email, uniqueness: true, email_format: { message: 'has invalid format' }
+  # validates :email, uniqueness: true, email_format: { message: 'has invalid format' }
   validates :names, presence: true, length: { minimum:4 }
 
    def self.search(search)

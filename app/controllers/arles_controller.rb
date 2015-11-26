@@ -20,6 +20,7 @@ class ArlesController < ApplicationController
   # GET /epss/new
   def new
     @arl = Arl.new
+    @arl.clinic_histories.build    
   end
 
   # GET /epss/1/edit
@@ -69,6 +70,6 @@ class ArlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def arl_params
-      params.require(:arl).permit(:name)
+      params.require(:arl).permit!
     end
 end

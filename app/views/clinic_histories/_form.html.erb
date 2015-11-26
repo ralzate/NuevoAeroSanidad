@@ -80,7 +80,7 @@
         <br/>        <br/>
         <br/>
         <div class="col-md-12">
-          <div class="col-md-4">
+          <div class="col-md-3">
               <label>Tipo Servicio:</label> 
                     <%= f.input :type_service,
                     prompt:       'Campo Obligatorio',
@@ -88,17 +88,22 @@
                     error: false, label: false, 
                     input_html:   {class: 'form-control'}, 'aria-required' => 'true' %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
               <label>Origen:</label> 
                   <%= f.collection_select :origin, City.all, :name, :name, {prompt: "Campo Obligatorio"}, {class: "form-control"} %>
 
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
               <label>Destino:</label> 
                   <%= f.collection_select :destination, City.all, :name, :name, {prompt: "Campo Obligatorio"}, {class: "form-control"} %>
 
 
+          </div>
+
+          <div class="col-md-3">
+              <label>Empresa:</label> 
+              <%= f.input :company,  :input_html => { :class => 'form-control', id: "company" } ,  :required => true , placeholder: 'Campo Obligatorio', label: false  %>
           </div>
           
         </div>
@@ -109,10 +114,7 @@
 
         <div class="col-md-12">
 
-<div class="col-md-4">
-              <label>Empresa:</label> 
-              <%= f.input :company,  :input_html => { :class => 'form-control', id: "company" } ,  :required => true , placeholder: 'Campo Obligatorio', label: false  %>
-          </div>
+
 
           <div class="col-md-4">
               <label>Nombre Acompañante:</label> 
@@ -124,46 +126,132 @@
                 <%= f.input :relationship,  :input_html => { :class => 'form-control', id: "accompanist_name" } ,  :required => true , placeholder: 'Campo Obligatorio', label: false  %>
 
           </div>
-
-          
-         
-        </div>
-                <br/>
-        <br/>   
-                <br/>
-        <br/>   
-         <div class="col-md-12">
-
 <div class="col-md-4">
               <label>Telefono Acompañante:</label> 
                 <%= f.input :phone,  :input_html => { :class => 'form-control' } ,  :required => true , placeholder: 'Campo Obligatorio', label: false  %>
 
           </div>
-
-          <div class="col-md-4">
-              <label>Arl:</label> 
-              <%= f.collection_select :arl_id, Arl.all, :id, :name, {prompt: "Selecciones una Arl"}, {class: "form-control"} %>
-          </div>
-
-
-<div class="col-md-4">
-              <label>Eps:</label> 
-              <%= f.collection_select :eps_id, Eps.all, :id, :name, {prompt: "Selecciones una Eps"}, {class: "form-control"} %>
-          </div>
+          
+         
+        </div>
+                <br/>
+        <br/>   
 
 
+
+
+
+
+
+
+                <br/>
+        <br/>   
+        <div class="col-md-12">
+
+
+
+                    <div class="col-md-4">
+                        <label>Arl:</label> 
+                        <%= f.collection_select :arl_id, Arl.all, :id, :name, {prompt: "Selecciones una Arl"}, {class: "form-control arl"} %>
+                    </div>
+
+
+
+                  <div class="col-md-4">
+
+              <label for="chkPassport" style="margin-top:30px;">
+                  <input type="checkbox" id="chkPassport" />
+                 La Arl no esta registrada?
+              </label>
+
+                  </div>
+
+              <div id="dvPassport" style="display: none">
+
+                  <%= f.simple_fields_for :arl do |builder| %>
+              <%#= builder.label :account_type %>
+
+                  <div class="col-md-4">
+                    <label class="label">Nueva Arl</label>
+                    <div class="form-group">
+                      <%= builder.text_field :name, class: 'form-control' %>
+                    </div>
+                  </div>
+
+
+
+              <%#= builder.label :account_number %>
+              <% end %>
+
+
+              </div>
 
          </div>
 
         <br/>
         <br/>        <br/>
         <br/>
+ 
+
+        <div class="col-md-12">
+          
+
+              <div class="col-md-4">
+                  <label>Eps:</label> 
+                  <%= f.collection_select :eps_id, Eps.all, :id, :name, {prompt: "Selecciones una Eps"}, {class: "form-control eps"} %>
+              </div>
+
+
+
+
+                  <div class="col-md-4">
+
+              <label for="chkPassport2">
+                  <input type="checkbox" id="chkPassport2"  style="margin-top:30px;"/>
+                 La Eps no esta registrada?
+              </label>
+
+                  </div>
+
+              <div id="dvPassport2" style="display: none">
+
+                  <%= f.simple_fields_for :eps do |builder| %>
+              <%#= builder.label :account_type %>
+
+                  <div class="col-md-4">
+                    <label class="label">Nueva Eps</label>
+                    <div class="form-group">
+                      <%= builder.text_field :name, class: 'form-control' %>
+                    </div>
+                  </div>
+
+
+
+              <%#= builder.label :account_number %>
+              <% end %>
+
+
+              </div>
+
+
+
+
+
+
+
+        </div>
+
+
+        <br/>
+        <br/>        <br/>
+        <br/>
+
 
          <div class="row">
                   <div class="col-md-12">
 
             <div class="col-md-6">
-              <label>Razón de la consulta:</label> 
+              <label>Motivo de la consulta:</label> 
                 <%= f.text_area :reason_for_consultation, :class => 'form-control', id: "reason_for_consultation" ,  :required => true , placeholder: 'Campo Obligatorio', label: false  %>
           </div>
           <div class="col-md-6">
@@ -184,11 +272,11 @@
 <%= f.hidden_field :first_surname, :value => @patient.first_surname %>
 <%= f.hidden_field :second_surname, :value => @patient.second_surname %>
 <%= f.hidden_field :email, :value => @patient.email %>
-<%= f.hidden_field :type_document, :value => @patient.document %>
+<%= f.hidden_field :type_document, :value => @patient.type_document %>
 <%= f.hidden_field :document, :value => @patient.document %>
 <%= f.hidden_field :birthdate, :value => @patient.birthdate %>
 <%= f.hidden_field :gender, :value => @patient.gender %>
-<%= f.hidden_field :profession, :value => @patient.label_profession %>
+<%= f.hidden_field :profession, :value => @patient.profession %>
 <%= f.hidden_field :blood_type, :value => @patient.blood_type %>
 <%= f.hidden_field :nacionality, :value => @patient.nacionality %>
 <%= f.hidden_field :address, :value => @patient.address %>
@@ -240,3 +328,58 @@
 
 
 
+<script type="text/javascript">
+
+
+// Seleccionar una arl sin registrar una nueva
+$('.arl').change(function(e) {
+  if ($(this).prop("selectedIndex") != 0)
+    {
+        $('#chkPassport').prop('disabled', true);  
+    }
+    else
+    {
+        $('#chkPassport').prop('disabled', false);
+    }
+});
+
+
+
+// Seleccionar una eps sin registrar una nueva
+$('.eps').change(function(e) {
+  if ($(this).prop("selectedIndex") != 0)
+    {
+        $('#chkPassport2').prop('disabled', true);  
+    }
+    else
+    {
+        $('#chkPassport2').prop('disabled', false);
+    }
+});
+
+// Mostrar los Checkbox para agregar
+    $(function () {
+        $("#chkPassport").click(function () {
+            if ($(this).is(":checked")) {
+                $(".arl").prop('disabled', true);
+                $("#dvPassport").show();
+            } else {
+                $(".arl").prop('disabled', false);
+                $("#dvPassport").hide();
+            }
+        });
+    });
+
+    $(function () {
+        $("#chkPassport2").click(function () {
+            if ($(this).is(":checked")) {
+                $(".eps").prop('disabled', true);              
+                $("#dvPassport2").show();
+            } else {
+                $(".eps").prop('disabled', false);                            
+                $("#dvPassport2").hide();
+            }
+        });
+    });
+
+</script>

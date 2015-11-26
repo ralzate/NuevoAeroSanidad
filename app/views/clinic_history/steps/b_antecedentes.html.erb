@@ -356,12 +356,18 @@
 
 
 
+<% if @clinic_history.gender == "Femenino" %>
+
 
 
 
 <div class="container-fluid">
     <div class=" clearfix">
+
     <div class="row">
+    <center>
+      <h2>Gineco-Ostetricios</h2>
+    </center>
       <div class="col-md-2">
         <label class="control-label" for="firstname">Ciclo Menstrual</label>
         <%= f.text_field :menstrual_cycle, class: 'form-control', placeholder: 'Ciclo Menstrual' %>
@@ -378,7 +384,7 @@
       </div>
 
       <div class="col-md-2">
-      <h5>Esta en Embarazo</h5>
+      <h5>Esta en Embarazo?</h5>
 
       <div class="col-md-1">
         <label class="control-label" for="firstname">Si</label><br/>
@@ -457,6 +463,7 @@
   </div>
 </div>
 
+<% end %>
 
 
 <%= f.hidden_field :city, :value => @clinic_history.airport.city.name %>

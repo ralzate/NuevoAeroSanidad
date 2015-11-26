@@ -27,7 +27,14 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
-
+    @nom = @patient.first_name
+    @patient.first_name = @nom.capitalize
+    @nom1 = @patient.second_name
+    @patient.second_name = @nom1.capitalize
+    @nom = @patient.first_surname
+    @patient.first_surname = @nom.capitalize
+    @nom1 = @patient.second_surname
+    @patient.second_surname = @nom1.capitalize
     respond_to do |format|
       if @patient.save
         format.html { redirect_to new_patient_clinic_history_path(@patient), notice: 'Historia Clinica was successfully created.' }

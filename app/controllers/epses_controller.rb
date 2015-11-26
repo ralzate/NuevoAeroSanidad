@@ -20,6 +20,7 @@ class EpsesController < ApplicationController
   # GET /epss/new
   def new
     @eps = Eps.new
+    @eps.clinic_histories.build    
   end
 
   # GET /epss/1/edit
@@ -72,6 +73,6 @@ class EpsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def eps_params
-      params.require(:eps).permit(:name)
+      params.require(:eps).permit!
     end
 end

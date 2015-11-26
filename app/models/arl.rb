@@ -11,6 +11,7 @@
 class Arl < ActiveRecord::Base
 
    has_many :clinic_histories
+	accepts_nested_attributes_for :clinic_histories
 
 	
   def self.search(search)

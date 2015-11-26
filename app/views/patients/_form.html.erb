@@ -189,21 +189,7 @@
                     </div>
                   </div>
 
-                  
-                <div class="col-md-4">
-                  <label class="label">Ciudad</label>
-                  <div class="form-group">
-                    <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Campo Obligatorio"}, {class: "form-control"}  %>
-                  </div>
-                </div>
-
-              </div>
-
-
-
-
-
-              <div class="row">
+                                
                 <div class="col-md-4">
                   <div class="form-group">
                   <label class="label">Nacionalidad</label>
@@ -215,12 +201,33 @@
                   </div>
                 </div>
 
+              </div>
 
+
+
+
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label class="label">Ciudad</label>
+                  <div class="form-group">
+                    <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Campo Obligatorio"}, {class: "form-control city"}  %>
+                  </div>
+                </div>
+
+
+
+
+        <div class="col-md-4">
 
     <label for="chkPassport">
-        <input type="checkbox" id="chkPassport" />
-        No esta registrado?
+        <input type="checkbox" id="chkPassport"  style="margin-top:30px;" />
+       La Ciudad no esta registrada?
     </label>
+
+        </div>
+
     <div id="dvPassport" style="display: none">
 
         <%= f.simple_fields_for :city do |builder| %>
@@ -284,11 +291,30 @@
 
 
 <script type="text/javascript">
+
+
+// Seleccionar una ciudad sin registrar una nueva
+$('.city').change(function(e) {
+  if ($(this).prop("selectedIndex") != 0)
+    {
+        $('#chkPassport').prop('disabled', true);  
+    }
+    else
+    {
+        $('#chkPassport').prop('disabled', false);
+    }
+});
+
+// Mostrar el Checkbox para agregar
+
+
     $(function () {
         $("#chkPassport").click(function () {
             if ($(this).is(":checked")) {
+                $(".city").prop('disabled', true);              
                 $("#dvPassport").show();
             } else {
+                $(".city").prop('disabled', false);                            
                 $("#dvPassport").hide();
             }
         });

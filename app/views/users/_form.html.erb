@@ -214,8 +214,11 @@
 
                <div class="well pie_form">
                 <div class="form-actions"  style = "text-align:center!important"> 
-                    
+                    <% if current_user %>
                         <%= link_to "Volver al Listado", users_path, :class=>"btn btn-info color_blanco mrg" %>
+                    <% end %>
+
+
 
                         <button type="reset" class="btn btn btn-info custom" style = "margin-right:20px;">Borrar</button>
                         <%= f.submit "Guardar", :class => 'btn btn btn-info  custom' %>
